@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Share&display=swap');
+ html, body{
+     height: 100%;
+ }   
+
+body {
+    background-color: #999;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#7c7c7c+0,000000+100 */
+    background: #7c7c7c; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  #7c7c7c 0%, #000000 100%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover,  #7c7c7c 0%,#000000 100%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center,  #7c7c7c 0%,#000000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+.calculator{
+    background-color: rgb(53, 53, 53);
+    width: 300px;
+    padding: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    box-shadow: 0 6px 0 rgb(77, 74, 74), 0 8px 10px rgb(77, 75, 77);
+    border-radius: 5px;   
+}
+.result{
+    background-color: rgb(178, 185, 147);
+    color: rgb(14, 5, 5);
+    padding-right: 10px;
+    text-align: right;
+    margin: 8px 0 20px 10px;
+    width: 90%;
+    height: 50px;
+    font-size: 35px;
+    overflow: hidden;
+    box-shadow: 0 2px 0 rgb(180, 176, 176);
+    line-height: 50px;
+    box-shadow: inset 0 0 8px black, inset 0px 2px 0 rgb(189, 176, 176);
+}
+ul{
+    padding: 0;
+    margin: 0;
+}
+ul li {
+    list-style: none;
+    background: rgb(77, 73, 73);
+    padding: 10px;
+    width: 15%;
+    float: left;
+    color: white;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 5px;
+    box-shadow: 0 3px 0 #a5a5a5, 0 2px 5px rgba(0, 0, 0, 0.75); 
+    font-family: 'Share', cursive;
+}
+ul li:active{
+    position: relative;
+    top: 5px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4); 
+}
+ul li:nth-child(16){
+    height: 75px;
+    line-height: 75px;
+}
+
+ul li:last-child{
+    margin-top: -48px;
+    width: 65%;
+}
+.signature{
+    color: white;
+    font-size: 0.75rem;
+    text-align: right;
+    position: relative;
+    top: 4px;
+    right: 5px;
+    z-index: -1;
+    font-family: 'Share', cursive;
+}
+
+</style>
+
+
+<body>
+
+
+    <div class="calculator">
+        <div class="result">0</div>
+        <ul>
+            <li>C</li>
+            <li>*</li>
+            <li>/</li>
+            <li>.</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>+</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>-</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>=</li>
+            <li>0</li>
+        </ul>
+        <div class="signature">calculator by VINIT PATEL</div>
+    </div>
+
+
+<script>
+
+const $lis = document.querySelectorAll("ul li")
+
+$lis.forEach((node) => {
+    node.addEventListener('mousedown', function(event){
+        const value = node.innerText.trim()
+        const $result = document.querySelector(".result")
+        const resultText = $result.innerText.trim()
+
+        if(resultText == '0'|| resultText == 'undefined' || resultText == 'Infinity'){
+            $result.innerText = ''
+        }
+        if(value == '='){
+            let solution = eval(resultText)
+            $result.innerText = solution
+            return true
+        }
+        if(value == 'C'){
+            $result.innerText = ''
+            return true
+        }
+        $result.append(value)
+    })
+})
+
+
+
+</script>
+
+
+
+
+</body>
+
+</html>
